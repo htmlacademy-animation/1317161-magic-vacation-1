@@ -168,6 +168,9 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease-in-out, transform 0.7s ease, color 0.5s linear;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
@@ -182,6 +185,11 @@
   @media (max-width: $mobile) and (orientation: landscape) {
     color: $c-light;
     background-color: $c-dark;
+  }
+
+  .social-block--active & {
+    opacity: 1;
+    transform: translateY(0);
   }
 
   &:hover {
@@ -219,6 +227,8 @@
   }
 
   &--insta {
+    transition-delay: 0.3s;
+
     svg {
       width: 1.5rem;
       height: 1.5rem;
@@ -231,6 +241,8 @@
   }
 
   &--vk {
+    transition-delay: 0.5s;
+
     svg {
       width: 1.7rem;
       height: 1rem;
