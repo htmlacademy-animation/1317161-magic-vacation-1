@@ -240,16 +240,19 @@
     position: relative;
     display: block;
     color: inherit;
-    padding: 0 0.5em 0.5em;
+    padding: 0.2em 0.5em 0.5em;
+    transition: color 0.8s;
+    overflow: hidden;
 
-    &::after {
+    &::after,
+    &::before {
       content: "";
       position: absolute;
       bottom: 0;
       width: 100%;
       height: 2px;
       background-color: $c-light;
-      display: none;
+      transition: transform 0.5s;
       left: 0;
 
       @media (min-width: $stop-scaling) {
@@ -270,9 +273,30 @@
       }
     }
 
-    &.active {
+    &::after {
+      opacity: 0;
+      transition: opacity, transform 0.5s;
+      transform: translateX(-100px);
+    }
+
+    &::before {
+      transform: translateX(100px);
+      transition-delay: 0.2s;
+      transition-timing-function: ease-in;
+      background-color: $c-purple;
+    }
+
+    &.active,
+    &:hover {
       &::after {
-        display: block;
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    &:hover {
+      &::before {
+        transform: translateX(0);
       }
     }
 
