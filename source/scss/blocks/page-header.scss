@@ -27,6 +27,10 @@
 }
 
 .page-header__logo {
+  transform: translateX(-30px);
+  opacity: 0;
+  transition: opacity 0.5s ease-in,
+    transform 0.6s 0.2s cubic-bezier(0.3, 0.86, 0.28, 0.88);
   @include hover;
   position: relative;
   flex: none;
@@ -35,6 +39,11 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
+
+  .is-loaded & {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -171,12 +180,22 @@
 }
 
 .page-header__menu {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.6s ease-in,
+    transform 0.5s cubic-bezier(0.3, 0.86, 0.28, 0.88);
+  transition-delay: 0.5s;
   font-family: $font-alt;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.0418;
   color: $c-light;
+
+  .is-loaded & {
+    opacity: 1;
+    transform: translateX(0);
+  }
 
   @media (min-width: $stop-scaling) {
     font-size: 12px;
@@ -314,7 +333,13 @@
 }
 
 .page-header__social {
+  opacity: 0;
   margin-left: 4.8rem;
+  transition: opacity 0.7s 0.5s ease-in;
+
+  .is-loaded & {
+    opacity: 1;
+  }
 
   @media (min-width: $stop-scaling) {
     margin-left: 48px;
